@@ -1,4 +1,4 @@
-# Scraping-komikid
+# Scraping-Manga
 Scrape manga with python + BeautifulSoup
 
 ## Setting Environment
