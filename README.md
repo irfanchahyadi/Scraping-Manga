@@ -1,5 +1,5 @@
 # Scraping-komikid
-Scrape manga from komikid.com with python + BeautifulSoup
+Scrape manga with python + BeautifulSoup
 
 ## Setting Environment
 ```

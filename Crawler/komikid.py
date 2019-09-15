@@ -2,7 +2,7 @@
 """
 Scraping Manga from komikid.com
 Author: Irfan Chahyadi
-Source: github.com/irfanchahyadi/Scraping-komikid
+Source: github.com/irfanchahyadi/Scraping-Manga
 """
 
 # IMPORT REQUIRED PACKAGE
