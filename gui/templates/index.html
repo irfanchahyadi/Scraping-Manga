@@ -1,4 +1,122 @@
-<html>
-	<h1>TES</h1>
-	<a href='/crawl/onepiece'><button>One Piece</button></a>
-<html>
+{% extends 'outer.html' %}
+
+{% block body %}
+
+<!-- 
+  <h1>TES</h1>
+  <a href='/crawl/onepiece'><button>One Piece</button></a>
+  <a href='/shutdown'><button>Shutdown</button></a>
+  <a href='/stop_crawl'><button>Stop</button></a>
+ -->
+
+<main role="main" class="container">
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">List All Manga</h6>
+
+{% for id, name, image, desc in data['manga'] %}
+	
+    <div class="media pt-3">
+      <img class="bd-placeholder-img mr-2 rounded" width="32" height="32" src="/static/images/{{ image }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"></svg>
+      
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="d-flex justify-content-between align-items-center w-100">
+        <a href="#" data-toggle="modal" data-target="#scrapeModal" data-whatever="{{ id }}" data-id="{{ id }}" data-name="{{ name }}" data-image="{{ image }}" data-desc="{{ desc }}">
+          <strong class="text-gray-dark">{{ name }}</strong>
+        </a>
+        </div>
+        <span class="d-block">{{ desc[:170] + '...' }}</span>
+      </div>
+    </div>
+	
+{% endfor %}
+
+
+<!-- SCRAPE MODAL -->
+<div class="modal fade" id="scrapeModal" tabindex="-1" role="dialog" aria-labelledby="scrapeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">For title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	
+      	<div class="container-fluid">
+		    <div class="row">
+		      <div class="col-md-4">
+		      	<!-- <div class="vertical-center"> -->
+		      	<img class="modal-image" style="width:250px;height:350px;" src="" >
+		      	<!-- </div> -->
+		      </div>
+		      <div class="col-md-7 mx-2">
+	      		<h6 class="modal-name">For name</h6>
+	      		<p hidden class="modal-id">For id</p>
+		      	<p class="modal-desc">For description</p>
+		      	<div style="width: 200px;">
+			        <form>
+					    <select class="custom-select my-1 mr-sm-2 modal-option" id="modal_option">
+					      <option selected>Choose language...</option>
+					      <option value="1">One</option>
+					      <option value="2">Two</option>
+					      <option value="3">Three</option>
+					    </select>
+			        </form>
+		        </div>
+
+		      </div>
+		    </div>
+		</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a id="submit_link" href="">
+        	<button type="button" class="btn btn-primary" id="submit_link">Scrape</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- END SCRAPE MODAL -->
+
+
+<script>
+	$('#scrapeModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget)
+	  var id = button.data('id')
+	  var name = button.data('name')
+	  var image = button.data('image')
+	  var desc = button.data('desc')
+	  var modal = $(this)
+	  modal.find('.modal-title').text('Manga ' + name)
+	  modal.find('.modal-id').text(id)
+	  modal.find('.modal-name').text(name)
+	  modal.find('.modal-desc').text(desc)
+	  modal.find('.modal-image').attr('src', '/static/images/' + image)
+	  modal.find('.modal-option').children().remove()
+
+	  {% for lang_id, language in data['lang'] %}
+	  modal.find('.modal-option').append(new Option('{{ language }}', id + '_' + {{ lang_id }}));
+	  {% endfor %}
+
+	  $("#submit_link").attr('href', '/crawl/' + id + '_' + {{ data['lang'][0][0] }});
+	})
+</script>
+
+<script>
+	$("#modal_option").change(function () {
+	  var id = $('#scrapeModal').find('.modal-id').text
+	  $("#submit_link").attr('href', '/crawl/' + this.value);
+	});
+</script>
+
+
+</main>
+
+
+
+{% endblock %}
