@@ -2,7 +2,7 @@
 Scrape manga with python + BeautifulSoup
 
 ## Setting Environment (optional)
-ignore this step if you dont want to use virtual environment
+Ignore this step if you dont want to use virtual environment
 ```
 pip install virtualenv
 cd Scraping-Manga
@@ -11,7 +11,7 @@ venv\Scripts\activate
 ```
 
 ## Requirements
-install required tools
+Install required tools
 ```
 pip install -r requirements.txt
 ```
@@ -24,3 +24,4 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
+Your downloaded manga will saved on Result folder
