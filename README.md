@@ -1,5 +1,5 @@
 # Scraping-Manga
-Scrape manga with python + BeautifulSoup
+Scrape manga with python + BeautifulSoup with nice looking web gui
 
 ## Setting Environment (optional)
 Ignore this step if you dont want to use virtual environment
