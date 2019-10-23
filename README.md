@@ -30,8 +30,10 @@ pip install -r requirements.txt
 python main.py
 ```
 or run `main.py` file on your favorite IDE, web gui will immidiately show.
+
 Your downloaded manga will saved on Result folder
+
 You can also add new manga with Add Manga menu if you know the link and selector.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM4NTc0NTIzXX0=
+eyJoaXN0b3J5IjpbLTEwOTI4NzM2NV19
 -->
