@@ -1,6 +1,11 @@
 # Scraping-Manga
 Scrape manga with python + BeautifulSoup with nice looking web gui
 
+<p align="center">
+  <img src="demo/demo.gif"><br/>
+  <i>Scraping-Manga</i>
+</p>
+
 ## Setting Environment (optional)
 Ignore this step if you dont want to use virtual environment
 ```
