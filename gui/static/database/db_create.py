@@ -3,6 +3,8 @@
 Database creator
 Author: Irfan Chahyadi
 Source: github.com/irfanchahyadi/Scraping-Manga
+
+Run this file after edit / add manga list, when web gui not running.
 """
 
 import sqlite3, os
