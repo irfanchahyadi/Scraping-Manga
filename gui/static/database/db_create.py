@@ -23,7 +23,7 @@ create_table_manga_list = """
 	"""
 create_table_manga_crawler = """
 	CREATE TABLE manga_crawler (
-		id INTEGER,
+		id INT,
 		lang_id VARCHAR(5),
 		crawler VARCHAR(50) NOT NULL,
 		sub_url VARCHAR(255) NOT NULL,
